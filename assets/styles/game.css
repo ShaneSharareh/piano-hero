@@ -19,7 +19,7 @@
     
 }
 
-.key:active {
+.key-active {
 
     background-color: rgb(187, 187, 176);
 
@@ -39,4 +39,8 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+}
+
+.key-black-active{
+    background-color: rgb(71, 71, 71);
 }
