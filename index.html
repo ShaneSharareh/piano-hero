@@ -2,237 +2,317 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="assets/styles/game.css">
+    <link rel="stylesheet" href="dist/styles/piano.css">
     <script src="./node_modules/tone/build/Tone.js"></script>
-    <script src="assets/js/game.js"></script>
+    <script src="src/js/piano.js"></script>
+    <script src="src/js/game.js"></script>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <h1 id="song-title"> </h1>
     <div class="container">
-        <div class ="tabs-container">
-        
+        <div class ="tabs-container prompt-input">
+            <p id="prompt-input"></p>
         </div>
+        
         <div class="piano-container">
             <div class="top-frame">
+                <button id="switch-btn" onclick="switchNotes()">Switch </button>
+                <button id="start-btn" onclick="initiateGame()">Start Game</button>
             
             </div>
-            <div class="piano-key-container">
-
                 <ul class="key-list">
                     <li class="key"> 
-                    C2
+                    <p class="non-sharp-key-notes key-without-black-key">q</p>
                     </li>
 
 
                     <li class="key"> 
-                        <div class="key-black">C#2</div>
-                        D2
+                        <div class="key-black"><p class="black-key-notes">Q</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                            w
+                        </p>
                     </li>
                     
                     
                     <li class="key"> 
-                        <div class="key-black">D#2</div>
-                        E2
+                        <div class="key-black"><p class="black-key-notes">W</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        e
+                        </p>
                     </li>
 
 
                     <li class="key"> 
-                        F2
-                    </li>
-
-                    
-                    <li class="key"> 
-                        <div class="key-black">F#2</div>
-                        G2
-                    </li>
-
-
-                    <li class="key"> 
-                        <div class="key-black">G#2</div>
-                        A2
+                        <p class="non-sharp-key-notes key-without-black-key">r</p>
                     </li>
 
                     
+                    <li class="key"> 
+                        <div class="key-black"><p class="black-key-notes">R</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        t
+                        </p>
+                    </li>
+
+
+                    <li class="key"> 
+                        <div class="key-black"><p class="black-key-notes">T</p></div>
+                         <p class="non-sharp-key-notes key-with-black-key">
+                        y
+                        </p>
+                    </li>
+
+                    
                     
                     <li class="key"> 
-                        <div class="key-black">A#2</div>
-                        B2
+                        <div class="key-black"><p class="black-key-notes">Y</p></div>
+                         <p class="non-sharp-key-notes key-with-black-key">
+                        u
+                        </p>
                     </li>
 
 
                    
                     <li class="key"> 
-                        C3
+                        <p class="non-sharp-key-notes key-without-black-key">
+                        i
+                        </p>
                     </li>
 
 
                     <li class="key"> 
-                        <div class="key-black">C#3</div>
-                        D3
+                        <div class="key-black"><p class="black-key-notes">I</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        o
+                        </p>
                     </li>
                     
                     
                     <li class="key"> 
-                        <div class="key-black">D#2</div>
-                        E3
+                        <div class="key-black"><p class="black-key-notes">O</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        p
+                        </p>
                     </li>
 
 
                     <li class="key"> 
-                        F3
-                    </li>
+                        <p class="non-sharp-key-notes key-without-black-key">
 
-                    
-                    <li class="key"> 
-                        <div class="key-black">F#3</div>
-                        G3
-                    </li>
-
-
-                    <li class="key"> 
-                        <div class="key-black">G#3</div>
-                        A3
+                            [
+                        </p>
                     </li>
 
                     
+                    <li class="key"> 
+                        <div class="key-black"><p class="black-key-notes">{</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        ]
+                        </p>
+                    </li>
+
+
+                    <li class="key"> 
+                        <div class="key-black"><p class="black-key-notes">}</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">                       
+                        a
+                        </p>
+                    </li>
+
+                    
                     
                     <li class="key"> 
-                        <div class="key-black">A#3</div>
-                        B3
+                        <div class="key-black"><p class="black-key-notes">A</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        s
+                        </p>
                     </li>
 
                    
                     <li class="key"> 
-                        C4
+                        <p class="non-sharp-key-notes key-without-black-key">
+
+                            d
+                        </p>
                     </li>
 
 
                     <li class="key"> 
-                        <div class="key-black">C#4</div>
-                        D4
-                    </li>
-                    
-                    
-                    <li class="key"> 
-                        <div class="key-black">D#4</div>
-                        E4
-                    </li>
-
-
-                    <li class="key"> 
-                        F4
-                    </li>
-
-                    
-                    <li class="key"> 
-                        <div class="key-black">F#4</div>
-                        G4
-                    </li>
-
-
-                    <li class="key"> 
-                        <div class="key-black">G#4</div>
-                        A4
-                    </li>
-
-                    
-                    
-                    <li class="key"> 
-                        <div class="key-black">A#4</div>
-                        B4
-                    </li>
-
-
-                    <li class="key"> 
-                        C5
-                    </li>
-
-
-                    <li class="key"> 
-                        <div class="key-black">C#5</div>
-                        D5
+                        <div class="key-black"><p class="black-key-notes">D</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        f
+                        </p>
                     </li>
                     
                     
                     <li class="key"> 
-                        <div class="key-black">D#5</div>
-                        E5
+                        <div class="key-black"><p class="black-key-notes">F</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        g
+                        </p>
                     </li>
 
 
                     <li class="key"> 
-                        F5
+                        <p class="non-sharp-key-notes key-without-black-key">
+
+                            h
+                        </p>
                     </li>
 
                     
                     <li class="key"> 
-                        <div class="key-black">F#5</div>
-                        G5
+                        <div class="key-black"><p class="black-key-notes">H</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        j
+                        </p>
                     </li>
 
 
                     <li class="key"> 
-                        <div class="key-black">G#5</div>
-                        A5
+                        <div class="key-black"><p class="black-key-notes">J</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        k
+                        </p>
                     </li>
 
                     
                     
                     <li class="key"> 
-                        <div class="key-black">A#5</div>
-                        B5
+                        <div class="key-black"><p class="black-key-notes">K</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        i
+                        </p>
                     </li>
 
 
                     <li class="key"> 
-                        C6
+                        <p class="non-sharp-key-notes key-without-black-key">
+
+                            ;
+                        </p>
                     </li>
 
 
                     <li class="key"> 
-                        <div class="key-black">C#6</div>
-                        D6
+                        <div class="key-black"><p class="black-key-notes">:</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        z
+                        </p>
                     </li>
                     
                     
                     <li class="key"> 
-                        <div class="key-black">D#6</div>
-                        E6
+                        <div class="key-black"><p class="black-key-notes">Z</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        x
+                        </p>
                     </li>
 
 
                     <li class="key"> 
-                        F6
+                        <p class="non-sharp-key-notes key-without-black-key">
+
+                            c
+                        </p>
+                    </li>
+
+                    
+                    <li class="key"> 
+                        <div class="key-black"><p class="black-key-notes">C</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">                     
+                        v
+                        </p>
+                    </li>
+
+
+                    <li class="key"> 
+                        <div class="key-black"><p class="black-key-notes">V</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        b
+                        </p>
+                    </li>
+
+                    
+                    
+                    <li class="key"> 
+                        <div class="key-black"><p class="black-key-notes">B</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">                        
+                        n
+                        </p>
+                    </li>
+
+
+                    <li class="key"> 
+                        <p class="non-sharp-key-notes key-without-black-key">
+
+                            m
+                        </p>
+                    </li>
+
+
+                    <li class="key"> 
+                        <div class="key-black"><p class="black-key-notes">M</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        ,
+                        </p>
+                    </li>
+                    
+                    
+                    <li class="key"> 
+                        <div class="key-black"><p class="black-key-notes"> < </p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        .
+                        </p>
+                    </li>
+
+
+                    <li class="key"> 
+                        <p class="non-sharp-key-notes key-without-black-key">
+
+                            /
+                        </p>
                     </li>
 
                     
                     <li class="key"> 
-                        <div class="key-black">F#6</div>
-                        G6
+                        <div class="key-black"><p class="black-key-notes">?</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        1
+                        </p>
                     </li>
 
 
                     <li class="key"> 
-                        <div class="key-black">G#6</div>
-                        A6
+                        <div class="key-black"><p class="black-key-notes">!</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        2
+                        </p>
                     </li>
 
                     
                     
                     <li class="key"> 
-                        <div class="key-black">A#6</div>
-                        B6
+                        <div class="key-black"><p class="black-key-notes">@</p></div>
+                        <p class="non-sharp-key-notes key-with-black-key">
+                        3
+                        </p>
                     </li>
 
                      <li class="key"> 
-                        C7
+                         <p class="non-sharp-key-notes key-without-black-key">
+                             4
+
+                         </p>
                     </li>
 
 
                 </ul>
-        </div>
+        
         </div>
     </div>
     

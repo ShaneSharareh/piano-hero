@@ -1,3 +1,7 @@
+let switched = false;
+let keysArr = new Array(2);
+keysArr[0] = ["q","Q","w","W","e","r","R","t","T","y","Y","u","i","I","o","O","p","[","{","]","}","a","A","s","d","D","f","F","g","h","H","j","J","k","K","l",";",":","z","Z","x","c","C","v","V","b","B","n","m","M",",","<",".","/","?","1","!","2","@","3","4"]
+keysArr[1] = ["C2","C#2","D2","D#2","E2","F2","F#2","G2","G#2","A2","A#2","B2","C3","C#3","D3","D#3","E3","F3","F#3","G3","G#3","A3","A#3","B3","C4","C#4","D4","D#4","E4","F4","F#4","G4","G#4","A4","A#4","B4","C5","C#5","D5","D#5","E5","F5","F#5","G5","G#5","A5","A#5","B5","C6","C#6","D6","D#6","E6","F6","F#6","G6","G#6","A6","A#6","B6","C7"]
 
 const piano = new Tone.Sampler({
 	urls: {
@@ -1007,3 +1011,213 @@ document.addEventListener("keyup", e=>{
 
     }
 });
+
+
+
+
+
+
+
+function switchNotes(){
+    keys = document.querySelectorAll(".non-sharp-key-notes")   
+    blackKeys = document.querySelectorAll(".black-key-notes")   
+    let index = 0
+    switched = !switched
+    if(switched){
+        index = 1
+    }else{
+        index = 0
+    }
+            keys[0].innerHTML =  keysArr[index][0];
+            
+            blackKeys[0].innerHTML = keysArr[index][1];
+            
+            keys[1].innerHTML = keysArr[index][2] ;
+            
+            blackKeys[1].innerHTML = keysArr[index][3];
+    
+            
+
+             keys[2].innerHTML = keysArr[index][4] ;
+        
+             
+             keys[3].innerHTML = keysArr[index][5] ;
+        
+
+            blackKeys[2].innerHTML = keysArr[index][6];
+    
+            
+             keys[4].innerHTML = keysArr[index][7] ;
+        
+            blackKeys[3].innerHTML = keysArr[index][8];
+    
+            
+             keys[5].innerHTML = keysArr[index][9] ;
+        
+
+
+            blackKeys[4].innerHTML = keysArr[index][10];
+    
+            
+             keys[6].innerHTML = keysArr[index][11] ;
+        
+
+
+
+             keys[7].innerHTML = keysArr[index][12] ;
+        
+            blackKeys[5].innerHTML = keysArr[index][13];
+    
+            
+             keys[8].innerHTML = keysArr[index][14] ;
+        
+    
+            blackKeys[6].innerHTML = keysArr[index][15];
+    
+            
+
+
+             keys[9].innerHTML = keysArr[index][16] ;
+        
+
+
+             keys[10].innerHTML = keysArr[index][17] ;
+        
+
+
+
+            blackKeys[7].innerHTML = keysArr[index][18];
+    
+
+            
+
+             keys[11].innerHTML = keysArr[index][19] ;
+        
+
+            
+             blackKeys[8].innerHTML = keysArr[index][20];
+        
+             keys[12].innerHTML = keysArr[index][21] ;
+        
+
+
+            
+             blackKeys[9].innerHTML = keysArr[index][22];
+        
+
+             keys[13].innerHTML = keysArr[index][23] ;
+        
+
+             keys[14].innerHTML = keysArr[index][24] ;
+        
+             blackKeys[10].innerHTML = keysArr[index][25];
+        
+            
+
+             keys[15].innerHTML = keysArr[index][26] ;
+        
+    
+            
+             blackKeys[11].innerHTML = keysArr[index][27];
+        
+
+             keys[16].innerHTML = keysArr[index][28] ;
+        
+             keys[17].innerHTML = keysArr[index][29] ;
+        
+             blackKeys[12].innerHTML = keysArr[index][30];
+        
+            
+             keys[18].innerHTML = keysArr[index][31] ;
+        
+
+             blackKeys[13].innerHTML = keysArr[index][32];
+        
+            
+             keys[19].innerHTML = keysArr[index][33];
+    
+
+             blackKeys[14].innerHTML = keysArr[index][34];
+     
+            
+             keys[20].innerHTML = keysArr[index][35];
+        
+
+
+             keys[21].innerHTML = keysArr[index][36];
+        
+             blackKeys[15].innerHTML = keysArr[index][37];
+        
+            
+
+             keys[22].innerHTML = keysArr[index][38] ;
+        
+    
+             blackKeys[16].innerHTML = keysArr[index][39];
+        
+            
+
+             keys[23].innerHTML = keysArr[index][40] ;
+        
+             keys[24].innerHTML = keysArr[index][41] ;
+        
+             blackKeys[17].innerHTML = keysArr[index][42];
+        
+            
+             keys[25].innerHTML = keysArr[index][43] ;
+        
+             blackKeys[18].innerHTML = keysArr[index][44];
+        
+            
+             keys[26].innerHTML = keysArr[index][45] ;
+        
+
+             blackKeys[19].innerHTML = keysArr[index][46];
+        
+            
+             keys[27].innerHTML = keysArr[index][47] ;
+        
+
+             keys[28].innerHTML = keysArr[index][48] ;
+        
+             blackKeys[20].innerHTML = keysArr[index][49];
+        
+            
+
+             keys[29].innerHTML = keysArr[index][50] ;
+        
+    
+             blackKeys[21].innerHTML = keysArr[index][51];
+        
+            
+
+             keys[30].innerHTML = keysArr[index][52];
+        
+             keys[31].innerHTML = keysArr[index][53];
+        
+            
+             blackKeys[22].innerHTML = keysArr[index][54];
+        
+             keys[32].innerHTML = keysArr[index][55];
+        
+             blackKeys[23].innerHTML = keysArr[index][56];
+        
+             keys[33].innerHTML = keysArr[index][57];
+        
+   
+             blackKeys[24].innerHTML = keysArr[index][58];
+        
+             keys[34].innerHTML = keysArr[index][59];
+        
+             keys[35].innerHTML = keysArr[index][60];
+        
+        
+    }
+
+
+
+
+
+
+
+
