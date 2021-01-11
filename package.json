@@ -5,7 +5,7 @@
   "main": "assets/js/game.js",
   "scripts": {
     "webpack": "webpack --mode=development --watch",
-     "start": "node src/js/piano.js"
+     "start": "node app.js"
   },
   "keywords": [],
   "author": "",

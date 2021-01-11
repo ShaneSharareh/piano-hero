@@ -10,11 +10,15 @@ body{
 }
 
 .tabs-container{
-    margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 10px;
-    background-color: white;
+   margin: auto;
+   border-radius: 5px;
+   /* padding-right: 90px; */
+   /* margin-right: 5px; */
+   height: 231px;
+   width: 483px;
+   /* border: 3px solid green; */
+   padding: 10px;
+    background-image: url("../../assets/images/music_score_board.jpg");
     }
 .key-list {
     list-style: none;
@@ -73,6 +77,10 @@ body{
     text-align: center;
     font-size: 20px;
     font-weight: bold;
+   color: #FFD300;
+   font-family: 'Press Start 2P',
+   cursive
+
 }
 
 .error{
@@ -125,3 +133,4 @@ body{
 .key-with-black-key{
     text-align: center;
 }
+
