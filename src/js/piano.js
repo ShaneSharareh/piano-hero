@@ -1,3 +1,5 @@
+// import * as Tone from 'tone'
+
 let switched = false;
 let keysArr = new Array(2);
 keysArr[0] = ["q","Q","w","W","e","r","R","t","T","y","Y","u","i","I","o","O","p","[","{","]","}","a","A","s","d","D","f","F","g","h","H","j","J","k","K","l",";",":","z","Z","x","c","C","v","V","b","B","n","m","M",",","<",".","/","?","1","!","2","@","3","4"]
