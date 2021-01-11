@@ -83,6 +83,15 @@ body{
 
 }
 
+#score-percent{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFD300;
+    font-family: 'Press Start 2P',
+    cursive
+}
+
 .error{
     color: red
 }

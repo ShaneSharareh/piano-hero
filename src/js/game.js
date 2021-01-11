@@ -5,8 +5,15 @@ let verseIndex= 0;
 let verseCharIndex = 0
 let prompt = verses[verseIndex]
 let promptArr = [];
+let correctCount = 0;
 
 function initiateGame() {
+    promptArr = []
+     correctCount = 0;
+verseIndex= 0;
+verseCharIndex = 0
+            document.getElementById("score-percent").innerHTML = ""
+
      document.getElementById("prompt-input").innerHTML = prompt
 //     document.getElementById("song-title").innerHTML = "Speed of Sound - ColdPlay"
 
@@ -21,6 +28,7 @@ document.addEventListener("keyup", function (event) {
                     verse[verseCharIndex] =  "<span class='error'>"+verse[verseCharIndex]+"</span>"
                 }else{
                     verse[verseCharIndex] =  "<span class='correct'>"+verse[verseCharIndex]+"</span>"
+                    correctCount++
 
                 }
                 //document.getElementById("prompt-input").innerHTML = verse.join("")
@@ -36,7 +44,8 @@ document.addEventListener("keyup", function (event) {
                 verseCharIndex = 0;
             }
         }else{
-            document.getElementById("prompt-input").innerHTML = "Game Over"
+            
+            calcScore(verses.join("").length)
         }
 
 
@@ -77,6 +86,17 @@ document.addEventListener("keyup", function (event) {
     }
         });
  
+        function calcScore(total){
+            let score = Math.ceil(((correctCount)/total) * 100)
+            document.getElementById("score-percent").innerHTML = (score) + "%"
+            if(score<=60){
+                
+                document.getElementById("prompt-input").innerHTML = "Game Over, better luck next time"
+            }else{
+                document.getElementById("prompt-input").innerHTML = "Nice Job!!!"
+
+            }
+        }
 
 //let Noteverses = ["A4 A4 E5 D5 A4", "A4 E5 D5 G4", "G4 E5 D5 G4", "G4 E5 D5 F#4", "F#4 E5 D5 A4", "A4 E5 D5 G4", "G4 E5 D5 G4", ]
 

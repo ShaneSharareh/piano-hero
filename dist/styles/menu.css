@@ -1,0 +1,32 @@
+body {
+    background-image: url('https://png.pngtree.com/thumb_back/fw800/back_our/20190625/ourmid/pngtree-purple-gradient-music-banner-image_256498.jpg');
+    background-size: 100%;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+.menu-container{
+     margin: 0 auto;
+     display: table;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+}
+
+
+.menu-container button{
+    
+    background-color: #d4913d;
+    color: rgb(255 255 255);
+    font-size: 16px;
+    padding: 16px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    }
