@@ -4,8 +4,8 @@
   "description": "",
   "main": "assets/js/game.js",
   "scripts": {
-    "webpack": "webpack --mode=development --watch",
-     "start": "node app.js"
+    "test": "test",
+    "start": "webpack --watch --mode=development"
   },
   "keywords": [],
   "author": "",

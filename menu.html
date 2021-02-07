@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="src/js/game.js"></script>
+    <script  type="module" src="src/js/menu.js"></script>
+
 <link rel="preconnect" href="https://fonts.gstatic.com">
 
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -12,18 +13,26 @@
     <title>Document</title>
 </head>
 <body>
-    
-   <div class ="menu-container">
-        <button> Start Game</button>
-        <div></div>
-        <label for="cars">Choose a car:</label>
-        <div></div>
-<select name="cars" id="cars">
-  <option value="cold-play">Speed of Sound - Coldplay</option>
-  <option value=>More Coming Soon!</option>
+    <div id="menu">menu</div>
+    <div class ="menu-container">
+        <div class="menu-header">
+
+            <h1>Piano Hero</h1>
+        </div>
+        <div class = "menu-container-buttons">
+
+        <a class= "menu-btn" href="./index.html" onclick="songSelect()"> Start Game</a>
+         <a class= "menu-btn" href="#"> Free Play</a>
+         </div>
+        <div class="track-div">
+        <p>Choose a Track</p>
+<select class="track-select-list" name="track-list" id="track-list">
+  <option class="track selected" value="cold-play">Speed of Sound - Coldplay</option>
+  <option class="track" >More Tracks Coming Soon!</option>
   
 </select>
-   </div>
+</div>
+   
     
 </body>
 </html>

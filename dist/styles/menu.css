@@ -1,5 +1,19 @@
+.menu-header h1{
+    text-align: center;
+    color: hsl(33, 64%, 54%);
+    font-family: cursive;
+        margin-top: 50px;
+    margin-left: 32px;
+    
+
+}
+
+.menu-container-buttons{
+   display: block;
+}
+
 body {
-    background-image: url('https://png.pngtree.com/thumb_back/fw800/back_our/20190625/ourmid/pngtree-purple-gradient-music-banner-image_256498.jpg');
+    background-image: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v485-nunoon-24-musicnotesbackgroundicon_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=c02662d1f313fff0b24003340a02c466');
     background-size: 100%;
     background-repeat: repeat-y;
     background-attachment: fixed;
@@ -9,24 +23,99 @@ body {
 }
 
 .menu-container{
-     margin: 0 auto;
+    margin: 0 auto;
      display: table;
       position: absolute;
-      top: 50%;
+      top: 33%;
       left: 50%;
       transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
 }
 
+.menu-container p {
+text-align: center;
+color: hsl(33, 64%, 54%);
+margin-left: 22px;
+}
 
-.menu-container button{
+
+.menu-btn {
     
     background-color: #d4913d;
     color: rgb(255 255 255);
     font-size: 16px;
-    padding: 16px 30px;
+    padding: 10px 29px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
+        margin-left: 33px;
+          text-decoration: none;
+
+
+    }
+
+    .menu-btn:hover {
+        background-color: #dd7b20;
+
+    }
+
+    .menu-btn:active {
+    background-color: #a75c17;
+
+    }
+
+    .track-select-list{
+        padding: 10px;
+        margin-left: 77px;
+    margin-left: 75px;
+
+    }
+
+    .track-select{
+        position: relative;
+        display: block;
+        padding: 0 22px 0 22px;
+        font-size: 22px;
+        font-weight: 300;
+        color: #3b3b3b;
+        line-height: 60px;
+        cursor: pointer;
+        transition: all 0.5s;
+    }
+
+
+    .track-select__trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+        font-size: 20px;
+        font-weight: 300;
+        color: #3b3b3b;
+        height: 60px;
+        line-height: 60px;
+        background: #ffffff;
+        cursor: pointer;
+        border-width: 2px 0 2px 0;
+        border-style: solid;
+        border-color: #394a6d;
+    }
+
+    .track-select:hover {
+        cursor: pointer;
+        background-color: #b2b2b2;
+    }
+
+    .track-select.selected {
+        color: #ffffff;
+        background-color: #305c91;
+    }
+
+
+    .track-div{
+        margin-top: 30px;
+        margin-left: 5px;
+
     }

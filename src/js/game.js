@@ -6,17 +6,28 @@ let verseCharIndex = 0
 let prompt = verses[verseIndex]
 let promptArr = [];
 let correctCount = 0;
-
+import SONGTITLE from './menu'
+console.log(SONGTITLE)
 function initiateGame() {
-    promptArr = []
-     correctCount = 0;
-verseIndex= 0;
-verseCharIndex = 0
+    
+      
+       if(document.getElementById("load-marker") !== null){
+            correctCount = 0;
+            verseIndex= 0;
+            verseCharIndex = 0
+            alert(songTitle)
             document.getElementById("score-percent").innerHTML = ""
+            document.getElementById("song-title").innerHTML= songTitle
+             document.getElementById("prompt-input").innerHTML = prompt
+       }
+}
 
-     document.getElementById("prompt-input").innerHTML = prompt
-//     document.getElementById("song-title").innerHTML = "Speed of Sound - ColdPlay"
+document.addEventListener("DOMContentLoaded", initiateGame);
 
+
+function songSelect(){
+    songTitle = document.getElementById("track-list").value
+    alert(songTitle)
 }
 
 document.addEventListener("keyup", function (event) {
@@ -98,7 +109,7 @@ document.addEventListener("keyup", function (event) {
             }
         }
 
-//let Noteverses = ["A4 A4 E5 D5 A4", "A4 E5 D5 G4", "G4 E5 D5 G4", "G4 E5 D5 F#4", "F#4 E5 D5 A4", "A4 E5 D5 G4", "G4 E5 D5 G4", ]
+//let Noteverses = ["A4 A4 E5 D5 A4", "A4 E5 D5 G4", "G4 E5 D5 G4", "G4 E5 D5 F#4", "F#4 E5 D5 A4", "A4 E5 D5 G4", "G4 E5 D5 G4","G4 E5 D5 F#4", "E5","C#5","" ]
 
  
            
