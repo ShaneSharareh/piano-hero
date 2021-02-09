@@ -4,10 +4,13 @@
     <script id="root"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="dist/styles/piano.css">
+    <link rel="stylesheet" href="dist/styles/menu.css">
+    
     <script src="src/js/Tone.js"></script> 
-    <!-- <script src="dist/bundle.js"></script>     -->
-    <script src="src/js/piano.js"></script>
-    <script src="src/js/game.js"></script>
+    <script src="dist/bundle.js"></script>    
+    <script  src="src/js/piano.js"></script>
+    
+
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
@@ -16,11 +19,41 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <h1 id="song-title"> </h1>
+
+      <div id="modal-cont" class= "modal">
+                <div class="modal-content">
+                    <div id="menu">menu</div>
+    <div class ="menu-container">
+        <div class="menu-header">
+
+            <h1>Piano Hero</h1>
+        </div>
+        <div class = "menu-container-buttons">
+
+        <a id="menu-start" class= "menu-btn"  onclick="songSelect()"> Start Game</a>
+         <a class= "menu-btn"> Free Play</a>
+         </div>
+        <div class="track-div">
+        <p>Choose a Track</p>
+<select class="track-select-list" name="track-list" id="track-list">
+  <option class="track selected" value="mad-world">Mad World - Gary Jules</option>
+  <option class="track selected" value="jude">Hey Jude - Beatles</option>
+  <option class="track selected" value="speed-of-sound">Speed of Sound - Coldplay</option>
+
+  <option class="track" >More Tracks Coming Soon!</option>
+  
+</select>
+</div>
+
+   </div>
+                             
+
+                    </div>
+      </div>
+    <div id="load-marker">val</div>
     <div class="container">
         <div class ="tabs-container prompt-input">
-
+            <p id="song-title">  </p>
             <p id="score-percent"></p>
             <p id="prompt-input"></p>
         </div>
@@ -28,7 +61,7 @@
         <div class="piano-container">
             <div class="top-frame">
                 <button id="switch-btn" onclick="switchNotes()">Switch </button>
-                <button id="start-btn" onclick="initiateGame()">Start Game</button>
+                <button id="start-btn" >Start Game</button>
             
             </div>
                 <ul class="key-list">
