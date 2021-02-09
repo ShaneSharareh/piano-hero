@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script id="root"></script>
+    <script src="./app.js" id="root"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="dist/styles/piano.css">
+    <link rel="stylesheet" href="dist/styles/menu.css">
+
     <script src="src/js/Tone.js"></script> 
     <!-- <script src="dist/bundle.js"></script>     -->
     <script src="src/js/piano.js"></script>
@@ -17,10 +19,29 @@
 </head>
 <body>
     
-    <h1 id="song-title"> </h1>
+     <div class= "modal">
+                <div class="modal-content">
+                        
+                        <div class ="menu-container">
+        <button> Start Game</button>
+        <div></div>
+        <label for="cars">Choose a car:</label>
+        <div></div>
+<select name="cars" id="cars">
+  <option value="cold-play">Speed of Sound - Coldplay</option>
+  <option value=>More Coming Soon!</option>
+  
+</select>
+   </div>
+                             
+
+                    </div>
+
+    </div>
     <div class="container">
         <div class ="tabs-container prompt-input">
-
+            
+            <h1 id="song-title"> </h1>
             <p id="score-percent"></p>
             <p id="prompt-input"></p>
         </div>
@@ -28,7 +49,7 @@
         <div class="piano-container">
             <div class="top-frame">
                 <button id="switch-btn" onclick="switchNotes()">Switch </button>
-                <button id="start-btn" onclick="initiateGame()">Start Game</button>
+                <button id="start-btn">Start Game</button>
             
             </div>
                 <ul class="key-list">

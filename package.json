@@ -2,7 +2,7 @@
   "name": "piano-hero",
   "version": "1.0.0",
   "description": "",
-  "main": "assets/js/game.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "webpack": "webpack --mode=development --watch",
      "start": "node app.js"

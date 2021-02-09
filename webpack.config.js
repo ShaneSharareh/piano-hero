@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry: './src/js/piano.js',
+  entry: './src/js/game.js',
   output: {
     filename: './bundle.js',
   },
