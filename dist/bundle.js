@@ -1,45 +1,75 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
-
-/***/ "./src/js/game.js":
 /*!************************!*\
   !*** ./src/js/game.js ***!
   \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+// import SONGTITLE from './menu'
+// console.log(SONGTITLE)
+var verses; //= ["kkxzk","kxzj", "jxzj","jxzH", "Hxzk", "kxzj", "jxzj", ]
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./menu */ "./src/js/menu.js");
-var verses = ["kkxzk", "kxzj", "jxzj", "jxzH", "Hxzk", "kxzj", "jxzj"];
 var started = true;
 var userInput = "";
 var verseIndex = 0;
 var verseCharIndex = 0;
-var prompt = verses[verseIndex];
+var prompt; // = verses[verseIndex]
+
 var promptArr = [];
 var correctCount = 0;
+var speedOfSoundverses = ["E4,D4,A3,", "A3,E4,D4,G3", "G3,E4,D4,G3", "G3,E4,D4,F#3,F#3", "E4,D4,A3,", "A3,E4,D4,G3", "G3,E4,D4,G3", "G3,E4,D4,F#3,F#3"]; // ["kkxzk","kxzj", "jxzj","jxzH", "Hxzk", "kxzj", "jxzj"]
 
-console.log(_menu__WEBPACK_IMPORTED_MODULE_0__.default);
+var bealtesVerses = ["D4,B3", "B3,D4,E4,A3", "A3,B3,C4,G4", "G4,F#4,D4,E4,D4,C4,B3", "D4,E4,E4", "E4,A4,G4,F#4,G4,E4,D4", "G3,A3,B3", "E4,D4,D4,C4", "B3,G3,G3", "D4,B3", "B3,D4,E4,A3", "A3,B3,C4,G4", "G4,F#4,D4,E4,D4,C4,B3", "D4,E4,E4", "E4,A4,G4,F#4,G4,E4,D4", "G3,A3,B3", "E4,D4,D4,C4", "B3,G3,G3"];
+var madWorld = ["G#4,C5,G4,G#4,F4,G4,D#4,D4,A#3", "G#4,C5,G4,G#4,F4,G4,G#4,A#4,A#4", "F4,F4,G#4,G#4,F4,F4,C5,C5,C5,G#4", "A#4,A#4,A#4,G4", "A#4,A#4,A#4,G4", "A#4,A#4,A#4,G#4,G4,F4,F4", "F4,F4,G#4,G#4,F4,F4,C5,C5,C5,G#4", "A#4,A#4,A#4,G4", "A#4,A#4,A#4,G4", "A#4,A#4,A#4,G#4,G4,F4,F4", "F4,F4,G#4,G#4,C5,C5,D5,A#4", "A#4,D5,D5,A#4,A#4,F4", "F4,F4,G#4,G#4,C5,C5,D5,A#4", "A#4,D5,D5,A#4,A#4,F4", "F4,G#4,G#4,C5,C5,D5", "A#4,A#4,A#4,D5,D5,A#4,A#4,F4", "F4,G#4,G#4,C5,C5,D5,A#4,A#4,D5,D5,A#4,A#4,F4", "F4,G#4,G#4,C5,C5,D5", "A#4,A#4,A#4,D5,D5,A#4,A#4,F3", "G#4,F4,F4", "G#4,F4,F4"];
+var clocks = ["D#5,A#4,G4", "D#5,A#4,G4", "D#5,A#4", "C#5,A#4,F4", "C#5,A#4,F4", "C#5,A#4", "C#5,A#4,F4", "C#5,A#4,F4", "C#5,A#4", "C5,G#4,F4", "C5,G#4,F4", "C5,G#4", "G#5,G5,D#5", "G#5,G5,D#5", "G#5,G5", "G#5,G5,C#5", "G#5,G5,C#5", "G#5,G5", "G#5,G5,C#5", "G#5,G5,C#5", "G#5,G5", "G#5,G5,C5", "G#5,G5,C5", "G#5,G5"]; //let stairwayToheaven =["B3,D4,F#4,B#4,C#5,", "F#4,D4,C#5", "D5,F#4,D4,D5", "G#3,G#4,E4,B3", "G#4,G3,F#4", "D4,D4,F#4,D4","A3,C#4,D4,D4", "G3,F#3"]
+// Eb = D#5
+// Bb = 
+// Db = C#5
+// Ab = G#5
+// G = G5
+// F = F4
+// C= C5
+
+var keySwitchArr = new Array(2);
+keySwitchArr[0] = ["q", "Q", "w", "W", "e", "r", "R", "t", "T", "y", "Y", "u", "i", "I", "o", "O", "p", "[", "{", "]", "}", "a", "A", "s", "d", "D", "f", "F", "g", "h", "H", "j", "J", "k", "K", "l", ";", ":", "z", "Z", "x", "c", "C", "v", "V", "b", "B", "n", "m", "M", ",", "<", ".", "/", "?", "1", "!", "2", "@", "3", "4"];
+keySwitchArr[1] = ["C2", "C#2", "D2", "D#2", "E2", "F2", "F#2", "G2", "G#2", "A2", "A#2", "B2", "C3", "C#3", "D3", "D#3", "E3", "F3", "F#3", "G3", "G#3", "A3", "A#3", "B3", "C4", "C#4", "D4", "D#4", "E4", "F4", "F#4", "G4", "G#4", "A4", "A#4", "B4", "C5", "C#5", "D5", "D#5", "E5", "F5", "F#5", "G5", "G#5", "A5", "A#5", "B5", "C6", "C#6", "D6", "D#6", "E6", "F6", "F#6", "G6", "G#6", "A6", "A#6", "B6", "C7"];
 
 function initiateGame() {
+  document.getElementById("start-btn").addEventListener("click", initiateGame);
+  document.getElementById("menu-start").addEventListener("click", function () {
+    verseIndex = 0;
+    verseCharIndex = 0;
+    var songOptions = document.getElementById("track-list");
+    var SONGTITLE = songOptions.options[songOptions.selectedIndex].value;
+
+    switch (SONGTITLE) {
+      case "mad-world":
+        verses = chooseTrack("Gary Jules - Mad World", madWorld, "mad-world-background");
+        break;
+
+      case "jude":
+        verses = chooseTrack("The Beatles - Hey Jude", bealtesVerses, "beatles-background");
+        break;
+
+      default:
+        verses = chooseTrack("Coldplay - Speed Of Sound", speedOfSoundverses, "speed-of-sound-background");
+    }
+
+    prompt = verses[index];
+    document.getElementById("prompt-input").innerHTML = prompt;
+    var modal = document.getElementById("modal-cont");
+    modal.classList.remove("modal");
+    modal.classList.add("modal-off");
+  }); //verses = convertToKeyboardKeys(madWorld)
+  //prompt = verses[index]
+
   if (document.getElementById("load-marker") !== null) {
     correctCount = 0;
     verseIndex = 0;
     verseCharIndex = 0;
-    alert(songTitle);
     document.getElementById("score-percent").innerHTML = "";
-    document.getElementById("song-title").innerHTML = songTitle;
     document.getElementById("prompt-input").innerHTML = prompt;
   }
 }
 
 document.addEventListener("DOMContentLoaded", initiateGame);
-
-function songSelect() {
-  songTitle = document.getElementById("track-list").value;
-  alert(songTitle);
-}
-
 document.addEventListener("keyup", function (event) {
   if (event.key !== "Shift") {
     if (verseIndex < verses.length) {
@@ -64,7 +94,9 @@ document.addEventListener("keyup", function (event) {
         document.getElementById("prompt-input").innerHTML = promptArr.join(" ");
         verseCharIndex = 0;
       }
-    } else {
+    }
+
+    if (verseIndex >= verses.length) {
       calcScore(verses.join("").length);
     } // document.getElementById("prompt-input").innerHTML = verses[verseIndex]
     //console.log(userInput.length < newVerse.length)
@@ -94,6 +126,12 @@ document.addEventListener("keyup", function (event) {
   }
 });
 
+function chooseTrack(title, songTrack, background) {
+  document.getElementById("song-title").innerHTML = title;
+  document.body.classList.add(background);
+  return convertToKeyboardKeys(songTrack);
+}
+
 function calcScore(total) {
   var score = Math.ceil(correctCount / total * 100);
   document.getElementById("score-percent").innerHTML = score + "%";
@@ -103,84 +141,27 @@ function calcScore(total) {
   } else {
     document.getElementById("prompt-input").innerHTML = "Nice Job!!!";
   }
+}
+
+function convertToKeyboardKeys(newVerses) {
+  var convertedVerses = [];
+
+  for (var i = 0; i < newVerses.length; i++) {
+    var verse = newVerses[i]; //newly converted verse keys
+
+    var newVerseKeys = [];
+    var oldVerseKeys = verse.split(",");
+
+    for (var j = 0; j < oldVerseKeys.length; j++) {
+      var indexForSwitching = keySwitchArr[1].indexOf(oldVerseKeys[j]);
+      newVerseKeys.push(keySwitchArr[0][indexForSwitching]);
+    }
+
+    convertedVerses.push(newVerseKeys.join(""));
+  }
+
+  return convertedVerses;
 } //let Noteverses = ["A4 A4 E5 D5 A4", "A4 E5 D5 G4", "G4 E5 D5 G4", "G4 E5 D5 F#4", "F#4 E5 D5 A4", "A4 E5 D5 G4", "G4 E5 D5 G4","G4 E5 D5 F#4", "E5","C#5","" ]
-
-/***/ }),
-
-/***/ "./src/js/menu.js":
-/*!************************!*\
-  !*** ./src/js/menu.js ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-var SONGTITLE = "HIEN AND REX";
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SONGTITLE);
-
-/***/ })
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		if(__webpack_module_cache__[moduleId]) {
-/******/ 			return __webpack_module_cache__[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-/******/ 	// startup
-/******/ 	// Load entry module
-/******/ 	__webpack_require__("./src/js/game.js");
-/******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;
 //# sourceMappingURL=bundle.js.map
