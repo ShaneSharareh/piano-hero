@@ -18,43 +18,6 @@ const piano = new Tone.Sampler({
 	baseUrl: "https://tonejs.github.io/audio/salamander/",
 }).toDestination();
 
-let map = {}; // You could also use an array
-onkeydown = onkeyup = function(e){
-    const currentTime = Date.now();
-    let note ="";
-    e = e || event; // to deal with IE
-    if (currentTime - lastKeyTime > 100) {
-            map = [];
-        } 
-    map[e.keyCode] = e.type == 'keydown';
-    lastKeyTime = currentTime;
-
-    
-    if(map[17] && map[16] && map[65]){ // CTRL+SHIFT+A
-    alert('Control Shift A');
-     note = "c"
-    map = {};
-}else if(map[17] && map[16] && map[66]){ // CTRL+SHIFT+B
-    note = "b";
-    alert('Control Shift B');
-    map = {};
-}else if(map[17] && map[16] && map[67]){ // CTRL+SHIFT+C
-    alert('Control Shift C');
-    note = "e"
-    map = {};
-}
- if( note !== ""){
-     
-    if(note=== garbanzo[index]){
-        alert("good_work")
-        }
-        else{
-            alert("try again")
-        }
-        index++;
-    
-    }
-}
 
 //alert noise
 document.addEventListener("keydown", e=>{
