@@ -1,11 +1,10 @@
 body {
-    background-image: url('../../assets/images/main-background.jpg');
-    background-size: 100%;
-    background-repeat: repeat-y;
-    background-attachment: fixed;
-    height: 100%;
-    width: 100%;
-    font-family: sans-serif;
+    background: url('../../assets/images/main-background.jpg') no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+
     
 }
 

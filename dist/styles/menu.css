@@ -10,6 +10,8 @@
 
 .menu-container-buttons{
    display: block;
+    padding: 10px;
+
 }
 
 /* body {
@@ -23,7 +25,7 @@
 } */
 
 .menu-container{
-           margin: 15% auto;
+           margin: 10% auto;
            min-width: 50%;
            display: table;
            align-items: center;
@@ -49,8 +51,8 @@ margin-left: 22px;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-        margin-left: 33px;
-          text-decoration: none;
+   text-decoration: none;
+   margin:5px;
 
 
     }
@@ -160,5 +162,10 @@ margin-left: 22px;
              border: 1px solid #888;
              height: 65%;
              width: 50%;
+             min-height: 555px;
+
     }
     
+.menu-instruction-button-container{
+    margin-top:20px;
+}
