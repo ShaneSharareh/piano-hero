@@ -169,3 +169,56 @@ margin-left: 22px;
 .menu-instruction-button-container{
     margin-top:20px;
 }
+
+#error-none-selected{
+    text-align: center;
+    color:red;
+    font-size:17px
+}
+
+
+
+.track-selection-container {
+    position: relative;
+    min-width: 80px;
+    margin: 0 auto;
+}
+
+.track-selection-container:after {
+    content: '\f078';
+    font: normal normal normal 17px/1 FontAwesome;
+    color: #d4913d;
+    right: 11px;
+    top: 6px;
+    height: 34px;
+    padding: 12px 0px 0px 8px;
+    border-left: 1px solid #d4913d;
+    position: absolute;
+    pointer-events: none;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+    display: none;
+}
+
+.track-selection-container select {
+    appearance: none;
+    /* Add some styling */
+    cursor: pointer;
+    display: block;
+    outline: none;
+    width: 80%;
+    max-width: 300px;
+    height: 48px;
+    float: right;
+    margin: 5px 0px;
+    padding: 0px 24px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #a3560e;
+    font-weight: bold;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #d4913d;
+}

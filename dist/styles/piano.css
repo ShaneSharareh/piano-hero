@@ -8,6 +8,14 @@ body {
     
 }
 
+.hide-button{
+    display:none;
+}
+
+.display-button{ 
+    display: inline-block;
+}
+
 .beatles-background{
      background-image: url('../../assets/images/beatlesback.gif');
      background-size: 100%;
@@ -40,6 +48,7 @@ body {
 
 
 .tabs-container {
+    display:none;
     background-size: 98%;
     margin: auto;
     border-radius: 5px;
@@ -50,6 +59,10 @@ body {
     /* border: 3px solid green; */
     padding: 10px;
     background-image: url(../../assets/images/music_score_board.jpg);
+}
+
+.display-tabs-container{
+    display:block
 }
 
 .key-list {
@@ -127,7 +140,8 @@ body {
 
 }
 
-#verses-input{
+.notes-input{
+    display: block;
      text-align: center;
      font-size: 20px;
      font-weight: bold;
@@ -138,6 +152,10 @@ body {
      width: 84%;
      margin: 0 auto;
 
+}
+
+.no-notes-input {
+    display: none;
 }
 
 #score-percent {
@@ -163,6 +181,7 @@ body {
 }
 
 .piano-container {
+    display:none;
     margin-top: 180px;
     background-image: url('../../assets/images/pianobackgroun.jpg');
 
@@ -171,6 +190,10 @@ body {
     min-width: 1343px;
 
 
+}
+
+.display-piano-container{
+    display:block;
 }
 
 

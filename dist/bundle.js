@@ -14,6 +14,8 @@ var prompt; // = verses[verseIndex]
 
 var promptArr = [];
 var correctCount = 0;
+var freePlayPlaceholder = [""]; // ["kkxzk","kxzj", "jxzj","jxzH", "Hxzk", "kxzj", "jxzj"]
+
 var speedOfSoundverses = ["E4,D4,A3,", "A3,E4,D4,G3", "G3,E4,D4,G3", "G3,E4,D4,F#3,F#3", "E4,D4,A3,", "A3,E4,D4,G3", "G3,E4,D4,G3", "G3,E4,D4,F#3,F#3"]; // ["kkxzk","kxzj", "jxzj","jxzH", "Hxzk", "kxzj", "jxzj"]
 
 var bealtesVerses = ["D4,B3", "B3,D4,E4,A3", "A3,B3,C4,G4", "G4,F#4,D4,E4,D4,C4,B3", "D4,E4,E4", "E4,A4,G4,F#4,G4,E4,D4", "G3,A3,B3", "E4,D4,D4,C4", "B3,G3,G3", "D4,B3", "B3,D4,E4,A3", "A3,B3,C4,G4", "G4,F#4,D4,E4,D4,C4,B3", "D4,E4,E4", "E4,A4,G4,F#4,G4,E4,D4", "G3,A3,B3", "E4,D4,D4,C4", "B3,G3,G3"];
@@ -36,40 +38,56 @@ function initiateGame() {
   backgroundMusic.load();
   backgroundMusic.play();
   document.getElementById("reset-btn").addEventListener("click", reset);
-  document.getElementById("menu-start").addEventListener("click", function () {
-    verseIndex = 0;
-    verseCharIndex = 0;
-    var songOptions = document.getElementById("track-list");
-    var SONGTITLE = songOptions.options[songOptions.selectedIndex].value;
-
-    switch (SONGTITLE) {
-      case "mad-world":
-        verses = chooseTrack("Gary Jules - Mad World", madWorld, "mad-world-background");
-        break;
-
-      case "jude":
-        verses = chooseTrack("The Beatles - Hey Jude", bealtesVerses, "beatles-background");
-        break;
-
-      default:
-        verses = chooseTrack("Coldplay - Speed Of Sound", speedOfSoundverses, "speed-of-sound-background");
-    }
-
+  document.getElementById("freeplay-btn").addEventListener("click", function () {
+    verses = chooseTrack("free-play", freePlayPlaceholder, "main-background");
     prompt = verses[index];
     document.getElementById("prompt-input").innerHTML = prompt;
     var modal = document.getElementById("modal-cont");
     modal.classList.remove("modal");
     modal.classList.add("modal-off");
+    document.getElementById("piano-container-id").classList.add("display-piano-container");
+  });
+  document.getElementById("menu-start").addEventListener("click", function () {
+    //load content
+    var songOptions = document.getElementById("track-list");
+    var SONGTITLE = songOptions.options[songOptions.selectedIndex].value;
+
+    if (SONGTITLE !== "---") {
+      document.getElementById("reset-btn").classList.add("display-button");
+      document.getElementById("piano-container-id").classList.add("display-piano-container");
+      document.getElementById("tabs-container-id").classList.add("display-tabs-container");
+      verseIndex = 0;
+      verseCharIndex = 0;
+
+      switch (SONGTITLE) {
+        case "mad-world":
+          verses = chooseTrack("Gary Jules - Mad World", madWorld, "mad-world-background");
+          break;
+
+        case "jude":
+          verses = chooseTrack("The Beatles - Hey Jude", bealtesVerses, "beatles-background");
+          break;
+
+        default:
+          verses = chooseTrack("Coldplay - Speed Of Sound", speedOfSoundverses, "speed-of-sound-background");
+      }
+
+      prompt = verses[index];
+      document.getElementById("prompt-input").innerHTML = prompt;
+      var modal = document.getElementById("modal-cont");
+      modal.classList.remove("modal");
+      modal.classList.add("modal-off");
+    } else {
+      document.getElementById("error-none-selected").innerHTML = "Please select a song";
+    }
   }); //verses = convertToKeyboardKeys(madWorld)
   //prompt = verses[index]
 
-  if (document.getElementById("load-marker") !== null) {
-    correctCount = 0;
-    verseIndex = 0;
-    verseCharIndex = 0;
-    document.getElementById("score-percent").innerHTML = "";
-    document.getElementById("prompt-input").innerHTML = prompt;
-  }
+  correctCount = 0;
+  verseIndex = 0;
+  verseCharIndex = 0;
+  document.getElementById("score-percent").innerHTML = "";
+  document.getElementById("prompt-input").innerHTML = prompt;
 }
 
 document.addEventListener("DOMContentLoaded", initiateGame);
@@ -137,8 +155,8 @@ function chooseTrack(title, songTrack, background) {
 }
 
 function calcScore(total) {
+  document.getElementById("notes-header-field").classList.add("no-notes-input");
   var score = Math.ceil(correctCount / total * 100);
-  document.getElementById("verses-input").remove("verses-input");
   document.getElementById("score-percent").innerHTML = score + "%";
 
   if (score <= 60) {
@@ -177,6 +195,8 @@ function reset() {
   verses[verseIndex];
   promptArr = [];
   correctCount = 0;
+  document.getElementById("notes-header-field").classList.remove("no-notes-input");
+  document.getElementById("score-percent").innerHTML = "";
   document.getElementById("prompt-input").innerHTML = prompt;
 } //let Noteverses = ["A4 A4 E5 D5 A4", "A4 E5 D5 G4", "G4 E5 D5 G4", "G4 E5 D5 F#4", "F#4 E5 D5 A4", "A4 E5 D5 G4", "G4 E5 D5 G4","G4 E5 D5 F#4", "E5","C#5","" ]
 /******/ })()

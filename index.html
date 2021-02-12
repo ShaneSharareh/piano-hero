@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+          <link rel="shortcut icon" href="/assets/images/favi.ico" type="image/ico"/>
+
     <script id="root"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="dist/styles/piano.css">
     <link rel="stylesheet" href="dist/styles/menu.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script src="src/js/Tone.js"></script> 
     <script src="dist/bundle.js"></script>    
     <script  src="src/js/piano.js"></script>
@@ -16,7 +18,9 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>
+        Piano Hero
+    </title>
 </head>
 <body>
 
@@ -37,7 +41,7 @@
         <div class = "menu-container-buttons">
 
          <a id="menu-start" class= "menu-btn"  onclick="songSelect()"> Start Game</a>
-         <a class= "menu-btn"> Free Play</a>
+         <a class= "menu-btn" id="freeplay-btn"> Free Play</a>
          </div>
          <div class="menu-instruction-button-container">
             <a class= "menu-btn" href="instructions.html">Instructions</a>
@@ -46,14 +50,16 @@
          </div>
         <div class="track-div">
         <p>Choose a Track</p>
-<select class="track-select-list" name="track-list" id="track-list">
-  <option class="track selected" value="mad-world">Mad World - Gary Jules</option>
-  <option class="track selected" value="jude">Hey Jude - Beatles</option>
-  <option class="track selected" value="speed-of-sound">Speed of Sound - Coldplay</option>
+    <p id="error-none-selected"></p>
+    <div class="track-selection-container">
+        <select class="track-select-list" name="track-list" id="track-list">
+        <option class="track-selected" selected value="---">-------None Chosen--------</option>
+        <option class="track-selected" value="mad-world">Mad World - Gary Jules</option>
+        <option class="track-selected" value="jude">Hey Jude(intro) - Beatles</option>
+        <option class="track-selected" value="speed-of-sound">Speed of Sound(intro) - Coldplay</option>
+        </select>
+    </div>>
 
-  <option class="track" >More Tracks Coming Soon!</option>
-  
-</select>
 </div>
 
    </div>
@@ -61,19 +67,20 @@
 
                     </div>
       </div>
-    <div id="load-marker">val</div>
     <div class="container">
-        <div class ="tabs-container prompt-input">
+        <div id="tabs-container-id" class ="tabs-container prompt-input">
             <p id="song-title">  </p>
             <p id="score-percent"></p>
-            <p id="verses-input">Notes:</p>
+            <p id="notes-header-field" class="notes-input">Notes:</p>
             <p id="prompt-input"></p>
         </div>
         
-        <div class="piano-container">
+        <div id="piano-container-id" class="piano-container">
             <div class="top-frame">
                 <button id="switch-btn" onclick="switchNotes()">Switch </button>
-                <button id="reset-btn" >Reset</button>
+                <button class ="hide-button" id="reset-btn" >Reset</button>
+                <a href="/"><button >Back To Menu</button></a>
+
             
             </div>
                 <ul class="key-list">

@@ -11,6 +11,7 @@ let verseCharIndex = 0
  // = verses[verseIndex]
 let promptArr = [];
 let correctCount = 0;
+let freePlayPlaceholder = [""]// ["kkxzk","kxzj", "jxzj","jxzH", "Hxzk", "kxzj", "jxzj"]
 
 let speedOfSoundverses = ["E4,D4,A3,","A3,E4,D4,G3", "G3,E4,D4,G3", "G3,E4,D4,F#3,F#3", "E4,D4,A3,","A3,E4,D4,G3", "G3,E4,D4,G3", "G3,E4,D4,F#3,F#3"]// ["kkxzk","kxzj", "jxzj","jxzH", "Hxzk", "kxzj", "jxzj"]
 let bealtesVerses = ["D4,B3", "B3,D4,E4,A3", "A3,B3,C4,G4","G4,F#4,D4,E4,D4,C4,B3", "D4,E4,E4", "E4,A4,G4,F#4,G4,E4,D4", "G3,A3,B3","E4,D4,D4,C4","B3,G3,G3",
@@ -62,12 +63,32 @@ function initiateGame() {
     
  
             document.getElementById("reset-btn").addEventListener("click", reset);
-            document.getElementById("menu-start").addEventListener("click",function(){
-             verseIndex= 0;
-            verseCharIndex = 0
-              let songOptions = document.getElementById("track-list");
 
+            document.getElementById("freeplay-btn").addEventListener("click",function(){
+             verses = chooseTrack("free-play",freePlayPlaceholder,"main-background"); 
+            prompt = verses[index]
+            document.getElementById("prompt-input").innerHTML = prompt
+             let modal = document.getElementById("modal-cont");
+             modal.classList.remove("modal");
+            modal.classList.add("modal-off");
+            document.getElementById("piano-container-id").classList.add("display-piano-container")
+
+            })
+
+
+            document.getElementById("menu-start").addEventListener("click",function(){
+            //load content
+            let songOptions = document.getElementById("track-list");
             const SONGTITLE = songOptions.options[songOptions.selectedIndex].value;
+            if(SONGTITLE !=="---"){
+             document.getElementById("reset-btn").classList.add("display-button")
+
+                document.getElementById("piano-container-id").classList.add("display-piano-container")
+                document.getElementById("tabs-container-id").classList.add("display-tabs-container")
+
+                verseIndex= 0;
+            verseCharIndex = 0
+
             switch(SONGTITLE){
                 case "mad-world":
                     verses = chooseTrack("Gary Jules - Mad World",madWorld,"mad-world-background"); 
@@ -83,17 +104,17 @@ function initiateGame() {
              let modal = document.getElementById("modal-cont");
              modal.classList.remove("modal");
             modal.classList.add("modal-off");
-            
+        }else{
+            document.getElementById("error-none-selected").innerHTML="Please select a song"
+        }
             })
             //verses = convertToKeyboardKeys(madWorld)
             //prompt = verses[index]
-       if(document.getElementById("load-marker") !== null){
             correctCount = 0;
             verseIndex= 0;
             verseCharIndex = 0
             document.getElementById("score-percent").innerHTML = ""
              document.getElementById("prompt-input").innerHTML = prompt
-       }
 }
 
 
@@ -129,7 +150,6 @@ document.addEventListener("keyup", function (event) {
                 verseCharIndex = 0;
             }
         }if(verseIndex>= verses.length){
-            
             calcScore(verses.join("").length)
         }
 
@@ -179,8 +199,8 @@ document.addEventListener("keyup", function (event) {
         }
  
         function calcScore(total){
+            document.getElementById("notes-header-field").classList.add("no-notes-input")
             let score = Math.ceil(((correctCount)/total) * 100)
-            document.getElementById("verses-input").remove("verses-input");
             document.getElementById("score-percent").innerHTML = (score) + "%"
             if(score<=60){
                 
@@ -218,6 +238,9 @@ document.addEventListener("keyup", function (event) {
         verses[verseIndex]
          promptArr = [];
          correctCount = 0;
+         document.getElementById("notes-header-field").classList.remove("no-notes-input")
+
+         document.getElementById("score-percent").innerHTML =""
           document.getElementById("prompt-input").innerHTML = prompt
         }
 
