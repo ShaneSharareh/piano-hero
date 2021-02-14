@@ -207,6 +207,7 @@ body {
     font-size: 14px;
     border-radius: 11%;
     margin: 5px;
+    outline: none;
 }
 
 #song-title {
@@ -228,4 +229,12 @@ body {
 .key-with-black-key {
     text-align: center;
     margin-top: 136px;
+}
+
+
+
+.top-frame button:active {
+        background-color: rgb(43 38 38);
+
+
 }
