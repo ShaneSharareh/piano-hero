@@ -2,6 +2,12 @@
 /*!************************!*\
   !*** ./src/js/game.js ***!
   \************************/
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 // import SONGTITLE from './menu'
 // console.log(SONGTITLE)
 var verses; //= ["kkxzk","kxzj", "jxzj","jxzH", "Hxzk", "kxzj", "jxzj", ]
@@ -16,6 +22,8 @@ var promptArr = [];
 var correctCount = 0;
 var freePlayPlaceholder = [""]; // ["kkxzk","kxzj", "jxzj","jxzH", "Hxzk", "kxzj", "jxzj"]
 
+var cheerSound;
+var booSound;
 var speedOfSoundverses = ["E4,D4,A3,", "A3,E4,D4,G3", "G3,E4,D4,G3", "G3,E4,D4,F#3,F#3", "E4,D4,A3,", "A3,E4,D4,G3", "G3,E4,D4,G3", "G3,E4,D4,F#3,F#3"]; // ["kkxzk","kxzj", "jxzj","jxzH", "Hxzk", "kxzj", "jxzj"]
 
 var bealtesVerses = ["D4,B3", "B3,D4,E4,A3", "A3,B3,C4,G4", "G4,F#4,D4,E4,D4,C4,B3", "D4,E4,E4", "E4,A4,G4,F#4,G4,E4,D4", "G3,A3,B3", "E4,D4,D4,C4", "B3,G3,G3", "D4,B3", "B3,D4,E4,A3", "A3,B3,C4,G4", "G4,F#4,D4,E4,D4,C4,B3", "D4,E4,E4", "E4,A4,G4,F#4,G4,E4,D4", "G3,A3,B3", "E4,D4,D4,C4", "B3,G3,G3"];
@@ -109,7 +117,25 @@ document.addEventListener("keyup", function (event) {
       document.getElementById("prompt-input").innerHTML = promptArr.join(" ");
 
       if (verseCharIndex === verses[verseIndex].length) {
-        //tag on a space and increment the index
+        //remove errors/corrections
+        var elements = document.querySelectorAll('.error');
+
+        var _iterator = _createForOfIteratorHelper(elements),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {// let pops = element.parentNode.removeChild(element);
+            // alert(element.parentNode)
+
+            var element = _step.value;
+          } //tag on a space and increment the index
+
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+
         verseIndex++;
         promptArr[verseIndex] = verses[verseIndex];
         document.getElementById("prompt-input").innerHTML = promptArr.join(" ");
@@ -119,35 +145,13 @@ document.addEventListener("keyup", function (event) {
 
     if (verseIndex >= verses.length) {
       calcScore(verses.join("").length);
-    } // document.getElementById("prompt-input").innerHTML = verses[verseIndex]
-    //console.log(userInput.length < newVerse.length)
-    //  userInput += event.key;
-    //  if(verseIndex< verses.length){
-    //      document.getElementById("prompt-input").innerHTML = prompt
-    //  }else{
-    //      document.getElementById("prompt-input").innerHTML = "Game Over"
-    //  }
-    // if(charCount < verses[verseIndex].length - 1){
-    //     if(verses[verseIndex][charCount] !== event.key){
-    //       prompt += "<span class='error'>"+prompt+"</span>"
-    //     } 
-    //    // document.getElementById("user-input").innerHTML = userInput
-    //     charCount++
-    // }else{
-    //     verseIndex++;
-    //     prompt += " " + verses[verseIndex]
-    //     userInput += " "
-    //     charCount = 0
-    //     document.getElementById("prompt-input").innerHTML = prompt
-    //     //document.getElementById("user-input").innerHTML = ""
-    //     //document.getElementById("prompt-input").innerHTML = + " " //verses[verseIndex]
-    //     charCount = 0
-    // }
-
+    }
   }
 });
 
 function chooseTrack(title, songTrack, background) {
+  cheerSound = new Audio("win.wav");
+  booSound = new Audio("boo.wav");
   backgroundMusic.pause();
   document.getElementById("song-title").innerHTML = title;
   document.body.classList.add(background);
@@ -159,9 +163,19 @@ function calcScore(total) {
   var score = Math.ceil(correctCount / total * 100);
   document.getElementById("score-percent").innerHTML = score + "%";
 
-  if (score <= 60) {
+  if (score < 70) {
+    if (booSound) {
+      booSound.load();
+      booSound.play();
+    }
+
     document.getElementById("prompt-input").innerHTML = "Game Over, better luck next time";
   } else {
+    if (cheerSound) {
+      cheerSound.load();
+      cheerSound.play();
+    }
+
     document.getElementById("prompt-input").innerHTML = "Nice Job!!!";
   }
 }

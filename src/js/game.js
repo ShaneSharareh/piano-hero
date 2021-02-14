@@ -12,7 +12,8 @@ let verseCharIndex = 0
 let promptArr = [];
 let correctCount = 0;
 let freePlayPlaceholder = [""]// ["kkxzk","kxzj", "jxzj","jxzH", "Hxzk", "kxzj", "jxzj"]
-
+let cheerSound;
+let booSound;
 let speedOfSoundverses = ["E4,D4,A3,","A3,E4,D4,G3", "G3,E4,D4,G3", "G3,E4,D4,F#3,F#3", "E4,D4,A3,","A3,E4,D4,G3", "G3,E4,D4,G3", "G3,E4,D4,F#3,F#3"]// ["kkxzk","kxzj", "jxzj","jxzH", "Hxzk", "kxzj", "jxzj"]
 let bealtesVerses = ["D4,B3", "B3,D4,E4,A3", "A3,B3,C4,G4","G4,F#4,D4,E4,D4,C4,B3", "D4,E4,E4", "E4,A4,G4,F#4,G4,E4,D4", "G3,A3,B3","E4,D4,D4,C4","B3,G3,G3",
     "D4,B3", "B3,D4,E4,A3", "A3,B3,C4,G4","G4,F#4,D4,E4,D4,C4,B3", "D4,E4,E4", "E4,A4,G4,F#4,G4,E4,D4", "G3,A3,B3","E4,D4,D4,C4","B3,G3,G3"]
@@ -137,12 +138,20 @@ document.addEventListener("keyup", function (event) {
                     correctCount++
 
                 }
+                
                 //document.getElementById("prompt-input").innerHTML = verse.join("")
                 verseCharIndex++;
                 promptArr[verseIndex] = verse.join("")
 
                 document.getElementById("prompt-input").innerHTML = promptArr.join(" ")
              if(verseCharIndex === verses[verseIndex].length ){
+                //remove errors/corrections
+                var elements = document.querySelectorAll('.error');  
+                    for (var element of elements) {
+                        // let pops = element.parentNode.removeChild(element);
+                        // alert(element.parentNode)
+                        }
+
                 //tag on a space and increment the index
                 verseIndex++
                  promptArr[verseIndex] =verses[verseIndex] 
@@ -152,60 +161,35 @@ document.addEventListener("keyup", function (event) {
         }if(verseIndex>= verses.length){
             calcScore(verses.join("").length)
         }
-
-
-   // document.getElementById("prompt-input").innerHTML = verses[verseIndex]
-            
-
-            //console.log(userInput.length < newVerse.length)
-
-            //  userInput += event.key;
-            //  if(verseIndex< verses.length){
-
-            //      document.getElementById("prompt-input").innerHTML = prompt
-            //  }else{
-            //      document.getElementById("prompt-input").innerHTML = "Game Over"
-
-            //  }
-
-            // if(charCount < verses[verseIndex].length - 1){
-            //     if(verses[verseIndex][charCount] !== event.key){
-            //       prompt += "<span class='error'>"+prompt+"</span>"
-            //     } 
-                
-               
-            //    // document.getElementById("user-input").innerHTML = userInput
-            //     charCount++
-            // }else{
-            //     verseIndex++;
-            //     prompt += " " + verses[verseIndex]
-            //     userInput += " "
-            //     charCount = 0
-            //     document.getElementById("prompt-input").innerHTML = prompt
-            //     //document.getElementById("user-input").innerHTML = ""
-            //     //document.getElementById("prompt-input").innerHTML = + " " //verses[verseIndex]
-                
-                
-            //     charCount = 0
-            // }
     }
         });
 
         function chooseTrack(title,songTrack,background){
-                backgroundMusic.pause()
+            cheerSound = new Audio( "win.wav");
+            booSound = new Audio( "boo.wav");
+            
+            backgroundMusic.pause()
             document.getElementById("song-title").innerHTML = title
             document.body.classList.add(background)
            return  convertToKeyboardKeys(songTrack)
         }
  
         function calcScore(total){
+           
             document.getElementById("notes-header-field").classList.add("no-notes-input")
             let score = Math.ceil(((correctCount)/total) * 100)
             document.getElementById("score-percent").innerHTML = (score) + "%"
-            if(score<=60){
-                
+            if(score<70){
+                if(booSound){  
+                    booSound.load()
+                    booSound.play()
+                }
                 document.getElementById("prompt-input").innerHTML = "Game Over, better luck next time"
             }else{
+                 if(cheerSound){  
+                    cheerSound.load()
+                    cheerSound.play()
+                }
                 document.getElementById("prompt-input").innerHTML = "Nice Job!!!"
 
             }
