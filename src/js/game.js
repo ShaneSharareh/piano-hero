@@ -146,9 +146,8 @@ document.addEventListener("keyup", function (event) {
                 document.getElementById("prompt-input").innerHTML = promptArr.join(" ")
              if(verseCharIndex === verses[verseIndex].length ){
                 //remove errors/corrections
-                var elements = document.querySelectorAll('.error');  
+                let elements = document.querySelectorAll('.error');  
                     for (var element of elements) {
-                        // let pops = element.parentNode.removeChild(element);
                         // alert(element.parentNode)
                         }
 

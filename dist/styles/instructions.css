@@ -11,6 +11,7 @@
     width: 50%;
     text-align: center;
     margin: 0 auto;
+    min-width: 490px;
 
 }
 
@@ -24,6 +25,7 @@
       height: 100%;
       width: 100%;
     font-family: sans-serif;
+    min-width: 490px;
 } 
 
 .menu-container {
@@ -47,15 +49,19 @@
 
     background-color: #d4913d;
     color: rgb(253 255 245);
-   font-size: 23px;
-   padding: 12px 62px;
    border: none;
    cursor: pointer;
-   border-radius: 5px;
    text-align: center;
    text-decoration: none;
    margin: 5px;
-   width: 100%;
+
+
+    font-size: 17px;
+    padding: 10px 29px;
+    display: inline-block;
+    width: 20%;
+    border-radius: 16px;
+    font-weight: bold;
 
 
 }

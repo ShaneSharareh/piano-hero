@@ -124,8 +124,7 @@ document.addEventListener("keyup", function (event) {
             _step;
 
         try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {// let pops = element.parentNode.removeChild(element);
-            // alert(element.parentNode)
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {// alert(element.parentNode)
 
             var element = _step.value;
           } //tag on a space and increment the index
