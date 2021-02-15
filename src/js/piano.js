@@ -19,7 +19,25 @@ const piano = new Tone.Sampler({
 }).toDestination();
 
 
-//alert noise
+
+// document.addEventListener("DOMContentLoaded", function(){
+//     const blackKeysByClick = document.getElementsByClassName("key-black")
+// console.log(blackKeysByClick)
+
+
+
+// for(let i = 0; i<blackKeysByClick.length; i++){
+//         blackKeysByClick[i].addEventListener("click",playOnClick)
+//  }
+// });
+
+// const playOnClick = function(e){
+//     const keyNote = this.getAttribute("data-key")
+//     console.log(keyNote)
+//      piano.triggerAttack(keyNote)
+// }
+
+
 document.addEventListener("keydown", e=>{
     switch(e.key){
         case "q":
@@ -1219,6 +1237,8 @@ function switchNotes(){
     }
 
 
+
+    
 
 
 
