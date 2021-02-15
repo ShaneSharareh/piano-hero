@@ -223,7 +223,7 @@ select::-ms-expand {
     display: block;
     outline: none;
     width: 95%;
-    max-width: 300px;
+    min-width: 315px;
     height: 48px;
     float: right;
     margin: 5px 0px;
