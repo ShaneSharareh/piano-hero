@@ -1,5 +1,4 @@
 // import * as Tone from 'tone'
-const garbanzo =["c","d","e"]
 let index = 0;
 let switched = false;
 let keysArr = new Array(2);
@@ -17,25 +16,6 @@ const piano = new Tone.Sampler({
 	release: 1,
 	baseUrl: "https://tonejs.github.io/audio/salamander/",
 }).toDestination();
-
-
-
-// document.addEventListener("DOMContentLoaded", function(){
-//     const blackKeysByClick = document.getElementsByClassName("key-black")
-// console.log(blackKeysByClick)
-
-
-
-// for(let i = 0; i<blackKeysByClick.length; i++){
-//         blackKeysByClick[i].addEventListener("click",playOnClick)
-//  }
-// });
-
-// const playOnClick = function(e){
-//     const keyNote = this.getAttribute("data-key")
-//     console.log(keyNote)
-//      piano.triggerAttack(keyNote)
-// }
 
 
 document.addEventListener("keydown", e=>{
